@@ -1,0 +1,35 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+	}
+}
+
+group 'openposapi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-undertow:1.4.3.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-websocket:1.4.3.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-actuator:1.4.3.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-security:1.4.3.RELEASE")
+	testCompile("junit:junit:4.12")
+	testCompile("org.mockito:mockito-all:1.10.19")
+}
