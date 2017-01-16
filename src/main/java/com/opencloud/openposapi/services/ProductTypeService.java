@@ -12,6 +12,6 @@ public interface ProductTypeService {
     ProductType getProductType(UUID productTypeKey);
     List<ProductType> listProductType();
     ProductType addProductType(ProductType productType);
-    ProductType updateProductType(ProductType productType);
+    ProductType updateProductType(UUID productTypeKey, ProductType productType);
     void deleteProductType(UUID productType);
 }

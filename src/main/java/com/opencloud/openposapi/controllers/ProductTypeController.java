@@ -2,17 +2,11 @@ package com.opencloud.openposapi.controllers;
 
 import com.opencloud.openposapi.entities.ProductType;
 import com.opencloud.openposapi.services.ProductTypeService;
-import com.sun.corba.se.spi.ior.ObjectId;
-import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,4 +31,15 @@ public class ProductTypeController {
         return new ResponseEntity<>(productType, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/producttype", method = RequestMethod.POST)
+    public ResponseEntity<ProductType> addProductType(@RequestBody ProductType productType) {
+        ProductType savedType = productTypeServ.addProductType(productType);
+        return new ResponseEntity<ProductType>(savedType, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/producttype/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<ProductType> updateProductType(@PathVariable("id")UUID productTypeKey, @RequestBody ProductType productType) {
+        ProductType savedType = productTypeServ.updateProductType(productTypeKey, productType);
+        return new ResponseEntity<ProductType>(savedType, HttpStatus.OK);
+    }
 }

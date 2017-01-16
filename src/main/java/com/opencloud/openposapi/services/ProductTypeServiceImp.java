@@ -35,8 +35,8 @@ public class ProductTypeServiceImp implements ProductTypeService {
     }
 
     @Override
-    public ProductType updateProductType(ProductType productType) {
-        ProductType existProductType = this.productTypeRepo.findOne(productType.getProductTypeKey());
+    public ProductType updateProductType(UUID productTypeKey, ProductType productType) {
+        ProductType existProductType = this.productTypeRepo.findOne(productTypeKey);
         if (existProductType == null) {
             return null;
         }
