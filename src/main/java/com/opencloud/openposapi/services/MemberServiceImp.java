@@ -33,7 +33,18 @@ public class MemberServiceImp implements MemberService {
 
     @Override
     public Member updateMember(Member member) {
-        return memberRepo.save(member);
+        Member existMember = memberRepo.findOne(member.getMemberKey());
+        if (existMember == null) {
+            return null;
+        }else{
+            existMember.setMemberCode(member.getMemberCode());
+            existMember.setMemberName(member.getMemberName());
+            existMember.setRegisterEmail(member.getRegisterEmail());
+            existMember.setRemarks(member.getRemarks());
+            existMember.setJoinDate(member.getJoinDate());
+            existMember.setRegisterPwd(member.getRegisterPwd());
+        }
+        return memberRepo.save(existMember);
     }
 
     @Override
