@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 
 @RestController
-public class ProductTypeController {
+public class ProductTypeController extends ApiController {
     @Autowired
     private ProductTypeService productTypeServ;
 
