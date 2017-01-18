@@ -35,7 +35,7 @@ public class CustomerServiceImp implements CustomerService{
     }
 
     @Override
-    public Customer updateCustomer(Customer customer) {
+    public Customer updateCustomer(UUID customerKey, Customer customer) {
         Customer existCustomer = this.customerRepo.findOne(customer.getCustomerKey());
         if (existCustomer == null) {
             return null;
