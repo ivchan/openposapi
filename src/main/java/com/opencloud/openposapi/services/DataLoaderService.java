@@ -105,7 +105,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer2 = new Customer();
         customer2.setCustomerKey(UUID.fromString("9c5a5832-f199-4129-bf14-f92aeb08cf12"));
-        customer2.setCustomerCode("000001");
+        customer2.setCustomerCode("ivanchan");
         customer2.setWebSite("http://www.demo.com");
         customer2.setSex("M");
         customer2.setFaxNo("");
@@ -133,7 +133,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer3 = new Customer();
         customer3.setCustomerKey(UUID.fromString("fc146dfa-c753-41d6-a7ef-c02990cafa4b"));
-        customer3.setCustomerCode("000002");
+        customer3.setCustomerCode("raychung");
         customer3.setWebSite("http://www.demo.com");
         customer3.setSex("M");
         customer3.setFaxNo("");
@@ -161,7 +161,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer4 = new Customer();
         customer4.setCustomerKey(UUID.fromString("ce60eb9b-bf1f-42c8-8ba9-5d6a51f3a33e"));
-        customer4.setCustomerCode("000003");
+        customer4.setCustomerCode("alextsang");
         customer4.setWebSite("http://www.demo.com");
         customer4.setSex("M");
         customer4.setFaxNo("");
@@ -189,7 +189,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer5 = new Customer();
         customer5.setCustomerKey(UUID.fromString("95583bb3-e3ad-4c7d-86b2-c9fd34dfa180"));
-        customer5.setCustomerCode("000004");
+        customer5.setCustomerCode("kingchau");
         customer5.setWebSite("http://www.demo.com");
         customer5.setSex("M");
         customer5.setFaxNo("");
@@ -217,7 +217,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer6 = new Customer();
         customer6.setCustomerKey(UUID.fromString("ef4cfcaf-33c6-4336-bcf1-fb009266890f"));
-        customer6.setCustomerCode("000005");
+        customer6.setCustomerCode("josephting");
         customer6.setWebSite("http://www.demo.com");
         customer6.setSex("M");
         customer6.setFaxNo("");
@@ -245,7 +245,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer7 = new Customer();
         customer7.setCustomerKey(UUID.fromString("6a419461-5d59-440c-bc9e-46cffaafad7a"));
-        customer7.setCustomerCode("000006");
+        customer7.setCustomerCode("cherriechan");
         customer7.setWebSite("http://www.demo.com");
         customer7.setSex("M");
         customer7.setFaxNo("");
@@ -273,7 +273,7 @@ public class DataLoaderService implements ApplicationRunner {
 
         Customer customer8 = new Customer();
         customer8.setCustomerKey(UUID.fromString("591906ba-d4e5-42ac-9c3d-1f0e318f7d32"));
-        customer8.setCustomerCode("000007");
+        customer8.setCustomerCode("blesslei");
         customer8.setWebSite("http://www.demo.com");
         customer8.setSex("M");
         customer8.setFaxNo("");
