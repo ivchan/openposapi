@@ -1,9 +1,10 @@
 package com.opencloud.openposapi.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -11,14 +12,19 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "pos_product_sku")
-public class ProductStyleSKU {
+public class ProductStyleSKU implements Serializable{
     @Id
     @Column(name = "sku_key")
     private UUID skuKey;
-    @Column(name = "product_style_key")
-    private UUID productStyleKey;
-    @Column(name = "product_key")
-    private UUID productKey;
+
+    @ManyToOne
+    @JoinColumn(name = "product_style_key")
+    private ProductStyle productStyle;
+
+    @Version
+    @JsonIgnore
+    @Column(name = "last_updated_time")
+    private Date updatedTime;
 
     public UUID getSkuKey() {
         return skuKey;
@@ -28,19 +34,19 @@ public class ProductStyleSKU {
         this.skuKey = skuKey;
     }
 
-    public UUID getProductStyleKey() {
-        return productStyleKey;
+    public Date getUpdatedTime() {
+        return updatedTime;
     }
 
-    public void setProductStyleKey(UUID productStyleKey) {
-        this.productStyleKey = productStyleKey;
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = updatedTime;
     }
 
-    public UUID getProductKey() {
-        return productKey;
+    public ProductStyle getProductStyle() {
+        return productStyle;
     }
 
-    public void setProductKey(UUID productKey) {
-        this.productKey = productKey;
+    public void setProductStyle(ProductStyle productStyle) {
+        this.productStyle = productStyle;
     }
 }

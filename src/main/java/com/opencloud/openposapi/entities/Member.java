@@ -1,6 +1,9 @@
 package com.opencloud.openposapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,24 +13,32 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "pos_member")
-public class Member {
+public class Member implements Serializable{
     @Id
     @Column(name = "member_key")
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     private UUID memberKey;
+
     @Column(name = "member_name", length = 100, nullable = false)
     private String memberName;
+
     @Column(name = "join_date")
     private Date joinDate;
+
     @Column(name = "member_code", length = 20, nullable = false)
     private String memberCode;
+
     @Column(name = "register_email", length = 100, nullable = false)
     private String registerEmail;
+
+    @JsonIgnore
     @Column(name = "register_pwd", length = 20, nullable = false)
     private String registerPwd;
+
     @Column(name = "register_remarks", length = 200, nullable = false)
     private String remarks;
+
     @Version
+    @JsonIgnore
     @Column(name = "last_updated_time")
     private Date updatedTime;
 

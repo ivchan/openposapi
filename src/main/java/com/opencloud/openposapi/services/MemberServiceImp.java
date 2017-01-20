@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * Created by ivanchan on 10/1/2017.
  */
-@Service("MemberService")
+@Service
 public class MemberServiceImp implements MemberService {
     @Autowired
     private MemberRepository memberRepo;
@@ -32,8 +32,8 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public Member updateMember(Member member) {
-        Member existMember = memberRepo.findOne(member.getMemberKey());
+    public Member updateMember(UUID memberKey, Member member) {
+        Member existMember = memberRepo.findOne(memberKey);
         if (existMember == null) {
             return null;
         }else{

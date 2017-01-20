@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * Created by ivanchan on 16/1/2017.
  */
-@Service("ProductTypeService")
+@Service
 public class ProductTypeServiceImp implements ProductTypeService {
     @Autowired
     private ProductTypeRepository productTypeRepo;

@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * Created by ivanchan on 16/1/2017.
  */
-@Service("CustomerService")
+@Service
 public class CustomerServiceImp implements CustomerService{
     @Autowired
     private CustomerRepository customerRepo;

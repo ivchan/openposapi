@@ -1,6 +1,9 @@
 package com.opencloud.openposapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,60 +13,86 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "pos_customer")
-public class Customer {
+public class Customer implements Serializable{
     @Id
     @Column(name = "customer_key")
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     private UUID customerKey;
-    @Column(name = "member_key", nullable = false)
-    private UUID memberKey;
+
     @Column(name = "first_name", length = 100, nullable = false)
     private String firstName;
+
     @Column(name = "last_name", length = 100, nullable = false)
     private String lastName;
+
     @Column(name = "company_name", length = 100)
     private String companyName;
+
     @Column(name = "customer_code", length = 20, nullable = false)
     private String customerCode;
+
     @Column(name = "customer_group")
     private UUID customerGroup;
+
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
     @Column(name = "sex", length = 5, nullable = false)
     private String sex;
+
     @Column(name = "contact_phone", length = 100)
     private String phoneNo;
+
     @Column(name = "contact_mobile", length = 100)
     private String mobileNo;
+
     @Column(name = "contact_fax", length = 100)
     private String faxNo;
+
     @Column(name = "contact_email", length = 100)
     private String emailAddress;
+
     @Column(name = "contact_website", length = 100)
     private String webSite;
+
     @Column(name = "contact_twitter", length = 100)
     private String twitterName;
+
     @Column(name = "contact_instagram", length = 100)
     private String instagramName;
+
     @Column(name = "home_address_1", length = 200)
     private String homeAddr1;
+
     @Column(name = "home_address_2", length = 200)
     private String homeAddr2;
+
     @Column(name = "home_address_3", length = 200)
     private String homeAddr3;
+
     @Column(name = "home_address_4", length = 200)
     private String homeAddr4;
+
     @Column(name = "post_address_1", length = 200)
     private String postAddr1;
+
     @Column(name = "post_address_2", length = 200)
     private String postAddr2;
+
     @Column(name = "post_address_3", length = 200)
     private String postAddr3;
+
     @Column(name = "post_address_4", length = 200)
     private String postAddr4;
+
     @Column(name = "remarks", length = 255)
     private String remarks;
+
+    @ManyToOne
+    @JoinColumn(name = "member_key")
+    private Member member;
+
     @Version
+    @JsonIgnore
     @Column(name = "last_updated_time")
     private Date updatedTime;
 
@@ -72,7 +101,6 @@ public class Customer {
         this.firstName = "";
         this.lastName = "";
         this.companyName = "";
-        this.memberKey = null;
         this.dateOfBirth = null;
         this.customerGroup = null;
         this.phoneNo = "";
@@ -91,6 +119,7 @@ public class Customer {
         this.postAddr4 = "";
         this.remarks = "";
         this.updatedTime = null;
+        this.member = null;
     }
 
     public UUID getCustomerKey() {
@@ -99,14 +128,6 @@ public class Customer {
 
     public void setCustomerKey(UUID customerKey) {
         this.customerKey = customerKey;
-    }
-
-    public UUID getMemberKey() {
-        return memberKey;
-    }
-
-    public void setMemberKey(UUID memberKey) {
-        this.memberKey = memberKey;
     }
 
     public String getFirstName() {
@@ -299,5 +320,13 @@ public class Customer {
 
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

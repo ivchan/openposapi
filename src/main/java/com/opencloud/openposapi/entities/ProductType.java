@@ -1,6 +1,9 @@
 package com.opencloud.openposapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -9,16 +12,23 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "pos_product_type")
-public class ProductType {
+public class ProductType implements Serializable{
     @Id
     @Column(name = "product_type_key")
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     private UUID productTypeKey;
+
     @Column(name = "product_type_name", nullable = false)
     private String productTypeName;
+
     @Column(name = "description", nullable = false)
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "member_key")
+    private Member member;
+
     @Version
+    @JsonIgnore
     @Column(name = "last_updated_time")
     private Date updatedTime;
 
@@ -59,5 +69,13 @@ public class ProductType {
 
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

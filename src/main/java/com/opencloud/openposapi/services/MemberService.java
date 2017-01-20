@@ -12,6 +12,6 @@ public interface MemberService {
     Member getMember(UUID memberKey);
     List<Member> listMembers();
     Member addMember(Member member);
-    Member updateMember(Member member);
+    Member updateMember(UUID memberKey, Member member);
     void deleteMember(UUID memberKey);
 }

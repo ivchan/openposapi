@@ -3,6 +3,7 @@ package com.opencloud.openposapi.services;
 import com.opencloud.openposapi.entities.Customer;
 import com.opencloud.openposapi.entities.Member;
 import com.opencloud.openposapi.entities.ProductType;
+import com.opencloud.openposapi.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,12 +21,18 @@ public class DataLoaderService implements ApplicationRunner {
     private MemberService memberService;
     private ProductTypeService productTypeService;
     private CustomerService customerService;
+    private UserService userService;
 
     @Autowired
-    public DataLoaderService(MemberService memberService, ProductTypeService productTypeService, CustomerService customerService) {
+    public DataLoaderService(
+            MemberService memberService,
+            ProductTypeService productTypeService,
+            CustomerService customerService,
+            UserService userService) {
         this.memberService = memberService;
         this.productTypeService = productTypeService;
         this.customerService = customerService;
+        this.userService = userService;
     }
 
     @Override
@@ -52,6 +59,22 @@ public class DataLoaderService implements ApplicationRunner {
         typeFashion.setDescription("Fashion");
         productTypeService.addProductType(typeFashion);
 
+        User userA = new User();
+        userA.setUserKey(UUID.fromString("40e47dce-79a4-487b-a6e1-e1096715eaec"));
+        userA.setUserName("Ivan Chan");
+        userA.setMember(memberDev);
+        userA.setJoinDate(new Date());
+        userA.setLoginID("ivanchan");
+        userService.addUser(userA);
+
+        User userB = new User();
+        userB.setUserKey(UUID.fromString("65bf5a8e-cd15-47a2-8df7-9c269d80ba4d"));
+        userB.setUserName("Chris Lee");
+        userB.setMember(memberDev);
+        userB.setJoinDate(new Date());
+        userB.setLoginID("chrislee");
+        userService.addUser(userB);
+
         Customer customer1 = new Customer();
         customer1.setCustomerKey(UUID.fromString("3edf47fb-06b7-46dc-bb19-bf0109b6e14c"));
         customer1.setCustomerCode("Demo");
@@ -77,7 +100,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer1.setInstagramName("");
         customer1.setRemarks("");
         customer1.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer1.setMemberKey(memberDev.getMemberKey());
+        customer1.setMember(memberDev);
         customerService.addCustomer(customer1);
 
         Customer customer2 = new Customer();
@@ -105,7 +128,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer2.setInstagramName("");
         customer2.setRemarks("");
         customer2.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer2.setMemberKey(memberDev.getMemberKey());
+        customer2.setMember(memberDev);
         customerService.addCustomer(customer2);
 
         Customer customer3 = new Customer();
@@ -133,7 +156,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer3.setInstagramName("");
         customer3.setRemarks("");
         customer3.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer3.setMemberKey(memberDev.getMemberKey());
+        customer3.setMember(memberDev);
         customerService.addCustomer(customer3);
 
         Customer customer4 = new Customer();
@@ -161,7 +184,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer4.setInstagramName("");
         customer4.setRemarks("");
         customer4.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer4.setMemberKey(memberDev.getMemberKey());
+        customer4.setMember(memberDev);
         customerService.addCustomer(customer4);
 
         Customer customer5 = new Customer();
@@ -189,7 +212,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer5.setInstagramName("");
         customer5.setRemarks("");
         customer5.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer5.setMemberKey(memberDev.getMemberKey());
+        customer5.setMember(memberDev);
         customerService.addCustomer(customer5);
 
         Customer customer6 = new Customer();
@@ -217,7 +240,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer6.setInstagramName("");
         customer6.setRemarks("");
         customer6.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer6.setMemberKey(memberDev.getMemberKey());
+        customer6.setMember(memberDev);
         customerService.addCustomer(customer6);
 
         Customer customer7 = new Customer();
@@ -245,7 +268,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer7.setInstagramName("");
         customer7.setRemarks("");
         customer7.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer7.setMemberKey(memberDev.getMemberKey());
+        customer7.setMember(memberDev);
         customerService.addCustomer(customer7);
 
         Customer customer8 = new Customer();
@@ -273,7 +296,7 @@ public class DataLoaderService implements ApplicationRunner {
         customer8.setInstagramName("");
         customer8.setRemarks("");
         customer8.setCustomerGroup(UUID.fromString("558ea73e-5dba-4d9c-90fb-36a26ede2ec2"));
-        customer8.setMemberKey(memberDev.getMemberKey());
+        customer8.setMember(memberDev);
         customerService.addCustomer(customer8);
     }
 }
